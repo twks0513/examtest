@@ -1,0 +1,4 @@
+@charset "UTF-8";
+	*{margin: 1px;}	
+	section{background-color: gray; height: 800px;}
+	section h3{text-align: center;}
