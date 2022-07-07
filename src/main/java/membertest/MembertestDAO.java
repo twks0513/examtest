@@ -107,8 +107,8 @@ public class MembertestDAO {
 			return list;
 		}
 		
-		public int modify(String custname,String phone,String address,String joindate, String grade, String city ) {
-			String sql = "update member_tbl_02 set custname=?,phone=?,address=?,joindate=?,grade?,city=?";
+		public int modify(String custname,String phone,String address,String joindate, String grade, String city,String custno ) {
+			String sql = "update member_tbl_02 set custname=?,phone=?,address=?,joindate=?,grade=?,city=? where custno=?";
 			int m = 0;
 			try {
 				ps = con.prepareStatement(sql);
@@ -118,12 +118,35 @@ public class MembertestDAO {
 				ps.setString(4, joindate);
 				ps.setString(5, grade);
 				ps.setString(6, city);
+				ps.setString(7, custno);
 				m = ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();			
 			}
 			System.out.println(m);
 			return m;
+		}
+		
+		public MembertestDTO getUser(String custno) {
+			MembertestDTO dto = new MembertestDTO();
+			String sql = "select * from member_tbl_02 where custno=?";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, custno);
+				rs= ps.executeQuery();
+				while(rs.next()) {
+					dto.setCustno(rs.getInt("custno"));
+					dto.setCustname(rs.getString("custname"));
+					dto.setPhone(rs.getString("phone"));
+					dto.setAddress(rs.getString("address"));
+					dto.setJoindate(rs.getDate("joindate"));
+					dto.setGrade(rs.getString("grade"));
+					dto.setCity(rs.getString("city"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return dto;
 		}
 		
 }

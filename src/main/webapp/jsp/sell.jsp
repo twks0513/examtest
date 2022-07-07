@@ -18,7 +18,7 @@
 		ArrayList<MembertestDTO> list = dao.sell();
 	%>
 
-	<H2 align="center" style="padding: 30px;">회원매출조회</H2>
+	<H2 align="center">회원매출조회</H2>
 	<form action="modifychk.jsp" method="post">
 	<div align="center">
 		<table border="1">
