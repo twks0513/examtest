@@ -38,7 +38,7 @@ ArrayList<MembertestDTO> list = dao.getMembers();
 					response.sendRedirect("index.jsp");
 				} %>
 			<tr>
-				<th><a id="num" href="modify.jsp?num=<%=dto.getCustno()%>"><%=dto.getCustno() %></a></th><th id="custname"><%=dto.getCustname() %></th><th id="phone"><%=dto.getPhone() %></th><th id="address"><%=dto.getAddress() %></th><th id="joindate"><%=dto.getJoindate() %></th><th id="grade"><%=grade %></th><th id="city"><%=dto.getCity() %></th>
+				<th><a id="num" href="modify.jsp?num=<%=dto.getCustno()%>"><%=dto.getCustno() %></a></th><th id="custname"><%=dto.getCustname() %></th><th id="phone"><%=dto.getPhone() %></th><th id="address"><%=dto.getAddress() %></th><th id="joindate"><%=dto.getJoindate().toString().replace('-', '.') %></th><th id="grade"><%=grade %></th><th id="city"><%=dto.getCity() %></th>
 				</tr>
 			<%} %>
 		</table>	
